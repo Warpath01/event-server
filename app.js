@@ -15,7 +15,6 @@ app.use('/api', require('./routes/eventRoute'));
 
 if (process.env.RUN_SEED === 'true') {
   require('./seed');
-  require('./adminSeed');
 }
 
 
