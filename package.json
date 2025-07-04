@@ -10,7 +10,7 @@
     "admin": "node adminSeed.js",
     "start": "node ./app.js",
     "seed": "node ./seeder.js && node ./adminSeed.js",
-    "build": "npm install bcryptjs cors dotenv express jsonwebtoken mongoose && node ./app.js && node ./seeder.js && node ./adminSeed.js"
+    "build": "npm install bcryptjs cors dotenv express jsonwebtoken mongoose"
   },
   "keywords": [],
   "author": "",
