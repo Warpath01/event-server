@@ -18,6 +18,10 @@ app.use(cors({
 // Parse JSON
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("This Server is Ready!");
+});
+
 // Routes
 app.use('/api/admin', require('./routes/adminRoute'));
 app.use('/api/users', require('./routes/userRoute'));
