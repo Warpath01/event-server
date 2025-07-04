@@ -1,8 +1,6 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const Event = require('./models/Event');
-
-dotenv.config();
 
 const events = [
     {
@@ -43,22 +41,12 @@ const events = [
     }
 ];
 
-const seed = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log('Connected to MongoDB');
-
-        await Event.deleteMany();  // Clear existing events
-        console.log('Old events removed');
-
-        await Event.insertMany(events);
-        console.log('6 sample events inserted');
-
-        process.exit();
-    } catch (err) {
-        console.error(err);
-        process.exit(1);
-    }
-};
-
-seed();
+mongoose.connect(process.env.MONGO_URI).then(async () => {
+    await Event.deleteMany(); // delete old events
+    await Event.insertMany(events);
+    console.log('Sample events created');
+    process.exit();
+}).catch((err) => {
+    console.error(err);
+    process.exit(1);
+});
