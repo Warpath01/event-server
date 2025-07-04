@@ -9,11 +9,13 @@ const app = express();
 connectDB();
 
 // Configure CORS properly
+const allowedOrigins = [process.env.CLIENT_URL || 'http://localhost:5173'];
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',  // replace * with your frontend URL in production
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,  // only if you use cookies/auth headers
+  credentials: false // usually false if you’re using tokens, not cookies
 }));
+
 
 // Body parser
 app.use(express.json());
