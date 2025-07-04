@@ -9,11 +9,11 @@ const app = express();
 connectDB();
 
 // Configure CORS properly
-const allowedOrigins = [process.env.CLIENT_URL || 'http://localhost:5173'];
+const allowedOrigins = [process.env.CLIENT_URL || 'https://eventregapp.onrender.com'];
 app.use(cors({
   origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: false // usually false if you’re using tokens, not cookies
+  credentials: true // usually false if you’re using tokens, not cookies
 }));
 
 
