@@ -10,7 +10,7 @@ connectDB();
 
 // CORS middleware FIRST!
 app.use(cors({
-  origin: 'https://eventapp-rho.vercel.app', // replace with your frontend domain
+  origin: process.env.CLIENT_URL, // use env variable
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
