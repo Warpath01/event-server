@@ -9,7 +9,7 @@ const app = express();
 connectDB();
 
 // Configure CORS properly
-const allowedOrigins = [process.env.CLIENT_URL || 'https://eventregapp.onrender.com'];
+const allowedOrigins = [process.env.CLIENT_URL || 'https://eventapp-rho.vercel.app'];
 app.use(cors({
   origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
