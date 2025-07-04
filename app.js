@@ -5,12 +5,15 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// Connect to MongoDB
+// Debug print
+console.log('Allowed origin:', process.env.CLIENT_URL);
+
+// Connect to DB
 connectDB();
 
-// CORS middleware FIRST!
+// Use CORS FIRST
 app.use(cors({
-  origin: process.env.CLIENT_URL, // use env variable
+  origin: process.env.CLIENT_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
@@ -27,7 +30,7 @@ app.use('/api/admin', require('./routes/adminRoute'));
 app.use('/api/users', require('./routes/userRoute'));
 app.use('/api', require('./routes/eventRoute'));
 
-// Optional seeder
+// Seeder
 if (process.env.RUN_SEED === 'true') {
   require('./seed');
 }
