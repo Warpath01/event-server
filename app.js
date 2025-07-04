@@ -1,22 +1,21 @@
 require('dotenv').config();
 const express = require('express');
-const connectDB = require('./config/db');
 const cors = require('cors');
+const connectDB = require('./config/db');
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
-// Configure CORS properly
+// CORS middleware FIRST!
 app.use(cors({
-  origin: 'https://eventapp-rho.vercel.app',
+  origin: 'https://eventapp-rho.vercel.app', // replace with your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 
-
-// Body parser
+// Parse JSON
 app.use(express.json());
 
 // Routes
