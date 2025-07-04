@@ -57,12 +57,15 @@ exports.login = async (req, res) => {
 
 exports.getEvents = async (req, res) => {
     try {
+        console.log('Request received for /users/events');  // debug
         const events = await Event.find();
         res.json(events);
     } catch (err) {
+        console.error(err);
         res.status(500).json({ msg: err.message });
     }
-}
+};
+
 
 exports.registerEvent = async (req, res) => {
     try {
